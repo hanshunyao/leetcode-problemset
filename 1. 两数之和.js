@@ -2,7 +2,7 @@
  * @Author: Hansy hanshunyao_hansy@163.com
  * @Date: 2025-01-24 20:09:33
  * @LastEditors: Hansy hanshunyao_hansy@163.com
- * @LastEditTime: 2025-01-24 20:09:39
+ * @LastEditTime: 2025-01-27 18:11:32
  * @FilePath: \leetcode-problemset\1. 两数之和.js
  * @Description: 1. 两数之和
  */
@@ -33,4 +33,15 @@ var twoSum = function (nums, target) {
       map1.set(nums[i], i);
     }
   }
+};
+
+var twoSum = function (nums, target) {
+  let hash = {};
+  for (let i = 0; i < nums.length; i++) {
+    if (hash[target - nums[i]] !== undefined) {
+      return [i, hash[target - nums[i]]];
+    }
+    hash[nums[i]] = i;
+  }
+  return [];
 };
