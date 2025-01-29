@@ -2,7 +2,7 @@
  * @Author: Hansy hanshunyao_hansy@163.com
  * @Date: 2025-01-22 22:15:08
  * @LastEditors: Hansy hanshunyao_hansy@163.com
- * @LastEditTime: 2025-01-22 22:15:18
+ * @LastEditTime: 2025-01-29 10:07:02
  * @FilePath: \leetcode-problemset\242. 有效的字母异位词.js
  * @Description: 242. 有效的字母异位词
  */
@@ -34,4 +34,7 @@ var isAnagram = function (s, t) {
   });
 
   return result;
+};
+var isAnagram = function(s, t) {
+  return s.length == t.length && [...s].sort().join('') === [...t].sort().join('')
 };
