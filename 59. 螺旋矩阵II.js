@@ -2,7 +2,7 @@
  * @Author: Hansy hanshunyao_hansy@163.com
  * @Date: 2025-01-08 22:03:48
  * @LastEditors: Hansy hanshunyao_hansy@163.com
- * @LastEditTime: 2025-01-08 22:03:48
+ * @LastEditTime: 2025-01-31 10:41:15
  * @FilePath: \leetcode-problemset\59. 螺旋矩阵II.js
  * @Description: 59. 螺旋矩阵 II
  */
@@ -48,4 +48,36 @@ var generateMatrix = function (n) {
     result[middle][middle] = count++;
   }
   return result;
+};
+var generateMatrix = function (n) {
+  const maxNum = n * n;
+  let curNum = 1;
+  const matrix = new Array(n).fill(0).map(() => new Array(n).fill(0));
+  let row = 0,
+    column = 0;
+  const directions = [
+    [0, 1],
+    [1, 0],
+    [0, -1],
+    [-1, 0],
+  ];
+  let directionIndex = 0;
+  while (curNum <= maxNum) {
+    matrix[row][column] = curNum;
+    curNum++;
+    const nextRow = row + directions[directionIndex][0],
+      nextColumn = column + directions[directionIndex][1];
+    if (
+      nextRow < 0 ||
+      nextRow >= n ||
+      nextColumn < 0 ||
+      nextColumn >= n ||
+      matrix[nextRow][nextColumn] !== 0
+    ) {
+      directionIndex = (directionIndex + 1) % 4;
+    }
+    row = row + directions[directionIndex][0];
+    column = column + directions[directionIndex][1];
+  }
+  return matrix;
 };
