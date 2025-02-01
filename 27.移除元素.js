@@ -2,7 +2,7 @@
  * @Author: Hansy hanshunyao_hansy@163.com
  * @Date: 2024-12-31 09:48:12
  * @LastEditors: Hansy hanshunyao_hansy@163.com
- * @LastEditTime: 2024-12-31 09:49:32
+ * @LastEditTime: 2025-02-01 22:51:34
  * @FilePath: \leetcode-problemset\27.移除元素.js
  * @Description: 27.移除元素
  */
@@ -33,6 +33,18 @@ var removeElement = function (nums, val) {
     if (nums[right] !== val) {
       nums[left++] = nums[right];
     }
+  }
+  return left;
+};
+var removeElement = function(nums, val) {
+  let left = 0, right = nums.length;
+  while (left < right) {
+      if (nums[left] === val) {
+          nums[left] = nums[right - 1];
+          right--;
+      } else {
+          left++;
+      }
   }
   return left;
 };
