@@ -2,7 +2,7 @@
  * @Author: Hansy hanshunyao_hansy@163.com
  * @Date: 2025-01-06 22:10:21
  * @LastEditors: Hansy hanshunyao_hansy@163.com
- * @LastEditTime: 2025-01-06 22:11:01
+ * @LastEditTime: 2025-02-02 16:06:25
  * @FilePath: \leetcode-problemset\977. 有序数组的平方.js
  * @Description: 977. 有序数组的平方
  */
@@ -36,4 +36,12 @@ var sortedSquares = function (nums) {
     }
   }
   return result;
+};
+var sortedSquares = function(nums) {
+  let ans = [];
+  for (let num of nums) {
+      ans.push(num * num);
+  }
+  ans.sort((a, b) => a - b);
+  return ans;
 };
