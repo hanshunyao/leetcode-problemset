@@ -1,8 +1,8 @@
 /*
  * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
  * @Date: 2025-02-13 19:26:58
- * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2025-02-13 19:27:03
+ * @LastEditors: hansy hanshunyao_hansy@163.com
+ * @LastEditTime: 2025-02-14 17:51:42
  * @FilePath: \leetcode-problemset\239. 滑动窗口最大值.js
  * @Description: 239. 滑动窗口最大值
  */
@@ -36,6 +36,7 @@ var maxSlidingWindow = function (nums, k) {
     }
     enqueue(value) {
       let back = this.queue[this.queue.length - 1];
+      // 把队列中小于当前值的元素全部弹出
       while (back !== undefined && back < value) {
         this.queue.pop();
         back = this.queue[this.queue.length - 1];
@@ -44,6 +45,7 @@ var maxSlidingWindow = function (nums, k) {
     }
     dequeue(value) {
       let front = this.front();
+      // 如果要删除的元素是队列中的第一个元素，则删除
       if (front === value) {
         this.queue.shift();
       }
@@ -56,10 +58,12 @@ var maxSlidingWindow = function (nums, k) {
   let i = 0,
     j = 0;
   let resArr = [];
-  while (j < k) {
+  while (j < k) { // 先把前k个元素放入队列，装满队列
     helperQueue.enqueue(nums[j++]);
   }
+  // 当队列达到最大值之后，开始往结果数组中添加最大值
   resArr.push(helperQueue.front());
+  // 依次推入原数组中的元素，调用enqueue和dequeue方法，保证队列中第一个位置的元素是最大值
   while (j < nums.length) {
     helperQueue.enqueue(nums[j]);
     helperQueue.dequeue(nums[i]);
