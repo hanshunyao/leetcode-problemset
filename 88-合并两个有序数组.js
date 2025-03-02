@@ -2,7 +2,7 @@
  * @Author: Hansy hanshunyao_hansy@163.com
  * @Date: 2025-03-01 23:05:28
  * @LastEditors: Hansy hanshunyao_hansy@163.com
- * @LastEditTime: 2025-03-01 23:05:35
+ * @LastEditTime: 2025-03-02 13:24:01
  * @FilePath: \leetcode-problemset\88-合并两个有序数组.js
  * @Description: 88. 合并两个有序数组
  */
@@ -37,4 +37,36 @@ var merge = function (nums1, m, nums2, n) {
   nums2.splice(n);
   nums1.push(...nums2);
   nums1.sort((a, b) => a - b);
+};
+
+// 逆序双指针 同时 排序 + 合并
+/**
+ * @param {number[]} nums1
+ * @param {number} m
+ * @param {number[]} nums2
+ * @param {number} n
+ * @return {void} Do not return anything, modify nums1 in-place instead.
+ */
+var merge = function (nums1, m, nums2, n) {
+  let resCur = m + n - 1;
+  let cur1 = m - 1;
+  let cur2 = n - 1;
+  let biggerNum;
+  while (cur1 >= 0 || cur2 >= 0) {
+    if (cur2 === -1) {
+      biggerNum = nums1[cur1]
+      cur1--;
+    } else if (cur1 === -1) {
+      biggerNum = nums2[cur2]
+      cur2--;
+    } else if (nums1[cur1] > nums2[cur2]) {
+      biggerNum = nums1[cur1]
+      cur1--;
+    } else {
+      biggerNum = nums2[cur2]
+      cur2--;
+    }
+    nums1[resCur] = biggerNum;
+    resCur--
+  }
 };
