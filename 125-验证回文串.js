@@ -2,7 +2,7 @@
  * @Author: Hansy hanshunyao_hansy@163.com
  * @Date: 2025-04-23 00:22:17
  * @LastEditors: Hansy hanshunyao_hansy@163.com
- * @LastEditTime: 2025-04-23 00:22:17
+ * @LastEditTime: 2025-05-14 13:07:35
  * @FilePath: \leetcode-problemset\125-验证回文串.js
  * @Description: 125. 验证回文串
  */
@@ -22,7 +22,7 @@
 // 输出：true
 // 解释：在移除非字母数字字符之后，s 是一个空字符串 "" 。
 // 由于空字符串正着反着读都一样，所以是回文串。
-var isPalindrome = function (s) {
+var isPalindrome1 = function (s) {
   let i = 0, j = s.length - 1;
   while (i < j) {
     if (!/[a-zA-Z0-9]/.test(s[i])) {
@@ -37,4 +37,14 @@ var isPalindrome = function (s) {
     }
   }
   return true;
+};
+
+// 去除无用元素 反转字符串 如果和原来相等 就是
+var isPalindrome2 = function (s) {
+  let newS = s.toLowerCase().replace(/[^a-z0-9]/g, '')
+  let reverseStr = newS.split('').reverse().join('')
+  if (newS === reverseStr) {
+    return true;
+  }
+  return false
 };
