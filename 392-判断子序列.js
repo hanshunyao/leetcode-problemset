@@ -2,7 +2,7 @@
  * @Author: Hansy hanshunyao_hansy@163.com
  * @Date: 2025-04-23 00:23:25
  * @LastEditors: Hansy hanshunyao_hansy@163.com
- * @LastEditTime: 2025-04-23 00:23:34
+ * @LastEditTime: 2025-05-16 11:42:07
  * @FilePath: \leetcode-problemset\392-判断子序列.js
  * @Description: 392. 判断子序列
  */
@@ -27,4 +27,20 @@ var isSubsequence = function (s, t) {
     }
   }
   return false;
+};
+var isSubsequence = function (s, t) {
+  let tlen = t.length
+  let slen = s.length
+  if (tlen === 0 && slen === 0) return true;
+  let cur = 0;
+  for (let i = 0; i < tlen; i++) {
+    if (t[i] === s[cur]) {
+      cur++;
+    }
+    if (cur === s.length) {
+      return true
+    }
+  }
+  return false
+
 };
