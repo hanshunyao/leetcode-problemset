@@ -6,7 +6,7 @@
  * @FilePath: \leetcode-problemset\2894-分类求和并作差.js
  * @Description: 2894. 分类求和并作差
  */
-给你两个正整数 n 和 m 。
+// 给你两个正整数 n 和 m 。
 // 现定义两个整数 num1 和 num2 ，如下所示：
 // num1：范围 [1, n] 内所有 无法被 m 整除 的整数之和。
 // num2：范围 [1, n] 内所有 能够被 m 整除 的整数之和。
